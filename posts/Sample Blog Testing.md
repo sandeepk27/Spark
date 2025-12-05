@@ -3,7 +3,7 @@ title: My Automated Blog Post
 published: false
 description: A short summary of the post for SEO and previews.
 tags: github, automation, devops
-series: My Automation Series
+series: My Blog Automation Series
 ---
 
 # Hello World
