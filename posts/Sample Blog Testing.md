@@ -1,11 +1,10 @@
 ---
 title: My Automated Blog Post
 published: false
-description: A short summary of the post for SEO and previews.
-tags: github, automation, devops
-series: My Blog Automation Series
+description: Testing devto automation
+tags: testing, github, automation
 ---
 
-# Hello World
+# This is a test post
 
-This is the content of my blog post written in Markdown!
+Hello world!
