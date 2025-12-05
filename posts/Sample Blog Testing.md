@@ -1,6 +1,6 @@
 ---
 title: My Automated Blog Post
-published: false
+published: true
 description: Testing devto automation
 tags: 'testing, github, automation'
 id: 3086992
