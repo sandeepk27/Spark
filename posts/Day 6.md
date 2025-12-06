@@ -68,29 +68,29 @@ Equivalent to SQL CASE WHEN.
 🌟 **5. Filtering Rows**
 
 ```df.filter(col("age") > 25).show()
-df.filter((col("age") > 25) & (col("city") == "Hyderabad"```))
+df.filter((col("age") > 25) & (col("city") == "Hyderabad")) ```
 
 You can also use .where() which is same as filter.
 
 
 🌟 **6. Removing Columns**
 
-df = df.drop("middle_name")
+```df = df.drop("middle_name")```
 
 
 
 🌟 **7. Removing Duplicate Rows**
 
-df.dropDuplicates(["id"]).show()
+```df.dropDuplicates(["id"]).show()```
 
 For entire table:
 
-df.distinct()
+```df.distinct()```
 
 
 🌟 **8. Sorting Rows**
 
-df.orderBy(col("salary").desc())
+```df.orderBy(col("salary").desc())```
 
 Sorting triggers shuffle → expensive!
 Use only when necessary.
@@ -100,16 +100,16 @@ Use only when necessary.
 
 Good code:
 
-df = (df
+```df = (df
       .filter(col("salary") > 30000)
       .withColumn("bonus", col("salary") * 0.10)
-      .select("name", "salary", "bonus"))
+      .select("name", "salary", "bonus"))```
 
 Bad code:
 
-df = df.filter(...)
+```df = df.filter(...)
 df = df.withColumn(...)
-df = df.select(...)
+df = df.select(...)```
 
 Always chain transformations for readability.
 
@@ -118,13 +118,13 @@ Always chain transformations for readability.
 
 Given sales data, add GST and categorize purchase:
 
-df = (df
+```df = (df
      .withColumn("amount_gst", col("amount") * 1.18)
      .withColumn("category",
                  when(col("amount") > 1000, "Premium")
                  .otherwise("Regular"))
      .filter(col("amount_gst") > 500)
-)
+) ```
 
 This is exactly how real-world ETL transformations look.
 
@@ -132,25 +132,15 @@ This is exactly how real-world ETL transformations look.
 🚀 **Summary**
 
 Today you learned:
-
 select
-
 filter
-
 withColumn
-
 lit
-
 when
-
 drop
-
 distinct
-
 orderBy
-
 chaining
-
 
 These are the building blocks of every PySpark pipeline.
 
