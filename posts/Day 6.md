@@ -4,6 +4,7 @@ published: true
 description: Essential of Pysaprk
 tags: 'dataengineering, python, spark, bigdata'
 id: 3089341
+date: '2025-12-06T17:31:40Z'
 ---
 
 Welcome back to Day 6 of the Spark Mastery Series!
