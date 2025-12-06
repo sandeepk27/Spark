@@ -54,7 +54,7 @@ tagging data
 adding metadata columns (pipeline_run_id, load_date)
 
 
-🌟 **4. Conditional Logic with when()**
+🌟 4. Conditional Logic with when()
 
 Equivalent to SQL CASE WHEN.
 
