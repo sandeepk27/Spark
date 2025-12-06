@@ -29,7 +29,7 @@ You can modify columns inside select:
 
 🌟 **2. Adding / Modifying Columns with withColumn()**
 
-df = df.withColumn("salary_hike", col("salary") * 1.25)
+```df = df.withColumn("salary_hike", col("salary") * 1.25)```
 
 Use withColumn for:
 
@@ -54,15 +54,14 @@ tagging data
 adding metadata columns (pipeline_run_id, load_date)
 
 
-🌟 4. Conditional Logic with when()
+🌟 **4. Conditional Logic with when()**
 
 Equivalent to SQL CASE WHEN.
-```
 df = df.withColumn(
     "age_group",
     when(col("age") < 18, "Minor")
     .when(col("age") < 60, "Adult")
-    .otherwise("Senior")) ```
+    .otherwise("Senior"))
 
 
 🌟 **5. Filtering Rows**
