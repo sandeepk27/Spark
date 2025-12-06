@@ -1,8 +1,9 @@
 ---
-title: "🔥 Day 6: Essential PySpark DataFrame Transformations"
+title: "\U0001F525 Day 6: Essential PySpark DataFrame Transformations"
 published: false
 description: Essential of Pysaprk
 tags: 'dataengineering, python, spark, bigdata'
+id: 3089341
 ---
 
 Welcome back to Day 6 of the Spark Mastery Series!
