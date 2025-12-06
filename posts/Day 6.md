@@ -1,6 +1,6 @@
 ---
 title: "\U0001F525 Day 6: Essential PySpark DataFrame Transformations"
-published: false
+published: true
 description: Essential of Pysaprk
 tags: 'dataengineering, python, spark, bigdata'
 id: 3089341
@@ -14,19 +14,19 @@ If you master today’s concepts, you’ll be comfortable writing 80% of all PyS
 Let’s begin.
 
 
-🌟 1. Selecting Columns — The Most Basic Transformation
+🌟 **1. Selecting Columns — The Most Basic Transformation**
 
 Just like SQL:
 
-df.select("name", "salary").show()
+```df.select("name", "salary").show()```
 
 You can modify columns inside select:
 
-df.select(col("salary") * 2).show()
+```df.select(col("salary") * 2).show()```
 
 
 
-🌟 2. Adding / Modifying Columns with withColumn()
+🌟 **2. Adding / Modifying Columns with withColumn()**
 
 df = df.withColumn("salary_hike", col("salary") * 1.25)
 
@@ -42,9 +42,9 @@ adding constants
 
 
 
-🌟 3. Adding Constant Value with lit()
+🌟 **3. Adding Constant Value with lit()**
 
-df = df.withColumn("country", lit("India"))
+```df = df.withColumn("country", lit("India"))```
 
 Use this when:
 
@@ -53,33 +53,32 @@ tagging data
 adding metadata columns (pipeline_run_id, load_date)
 
 
-🌟 4. Conditional Logic with when()
+🌟 **4. Conditional Logic with when()**
 
 Equivalent to SQL CASE WHEN.
 
-df = df.withColumn(
+```df = df.withColumn(
     "age_group",
     when(col("age") < 18, "Minor")
     .when(col("age") < 60, "Adult")
-    .otherwise("Senior")
-)
+    .otherwise("Senior")) ```
 
 
-🌟 5. Filtering Rows
+🌟 **5. Filtering Rows**
 
-df.filter(col("age") > 25).show()
-df.filter((col("age") > 25) & (col("city") == "Hyderabad"))
+```df.filter(col("age") > 25).show()
+df.filter((col("age") > 25) & (col("city") == "Hyderabad"```))
 
 You can also use .where() which is same as filter.
 
 
-🌟 6. Removing Columns
+🌟 **6. Removing Columns**
 
 df = df.drop("middle_name")
 
 
 
-🌟 7. Removing Duplicate Rows
+🌟 **7. Removing Duplicate Rows**
 
 df.dropDuplicates(["id"]).show()
 
@@ -88,7 +87,7 @@ For entire table:
 df.distinct()
 
 
-🌟 8. Sorting Rows
+🌟 **8. Sorting Rows**
 
 df.orderBy(col("salary").desc())
 
@@ -96,7 +95,7 @@ Sorting triggers shuffle → expensive!
 Use only when necessary.
 
 
-🌟 9. Transformations Chaining (Best Practice)
+🌟 **9. Transformations Chaining (Best Practice)**
 
 Good code:
 
@@ -114,7 +113,7 @@ df = df.select(...)
 Always chain transformations for readability.
 
 
-🌟 10. Real Use Case Example (Retail ETL)
+🌟 **10. Real Use Case Example (Retail ETL)**
 
 Given sales data, add GST and categorize purchase:
 
@@ -129,7 +128,7 @@ df = (df
 This is exactly how real-world ETL transformations look.
 
 
-🚀 Summary
+🚀 **Summary**
 
 Today you learned:
 
@@ -153,3 +152,5 @@ chaining
 
 
 These are the building blocks of every PySpark pipeline.
+
+Follow for more such content. Let me know if I missed anything in comments. Thank you!!
