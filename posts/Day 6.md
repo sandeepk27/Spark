@@ -1,5 +1,5 @@
 ---
-title: 🔥 Day 6: Essential PySpark DataFrame Transformations Every Data Engineer Must Know
+title: "🔥 Day 6: Essential PySpark DataFrame Transformations"
 published: false
 description: Essential of Pysaprk
 tags: 'dataengineering, python, spark, bigdata'
