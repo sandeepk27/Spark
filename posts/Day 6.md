@@ -57,8 +57,8 @@ adding metadata columns (pipeline_run_id, load_date)
 🌟 4. Conditional Logic with when()
 
 Equivalent to SQL CASE WHEN.
-
-```df = df.withColumn(
+```
+df = df.withColumn(
     "age_group",
     when(col("age") < 18, "Minor")
     .when(col("age") < 60, "Adult")
