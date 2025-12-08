@@ -1,5 +1,5 @@
 ---
-title: "\U0001F525 Day 8: Accelerating Spark Joins — Broadcast, Shuffle Optimization & Skew Handling"
+title: "\U0001F525 Day 8: Spark Join Optimization"
 published: true
 description: Essential of Pysaprk
 tags: 'dataengineering, python, spark, bigdata'
