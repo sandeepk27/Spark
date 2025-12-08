@@ -71,24 +71,18 @@ def process_files():
                     print(f"Found cover image: {cover_image_name}")
                     
                     # Update or Add cover_image in frontmatter
-                    if "cover_image:" in content:
-                        content = re.sub(r"cover_image:.*", f"cover_image: {public_url}", content)
+                    # Use robust regex with MULTILINE and start/end anchors
+                    if re.search(r"^cover_image:.*$", content, flags=re.MULTILINE):
+                        content = re.sub(r"^cover_image:.*$", f"cover_image: {public_url}", content, flags=re.MULTILINE)
                         print("Updated existing cover_image")
                     else:
-                        # Add after title or at the end of frontmatter
-                        if "title:" in content:
-                            content = re.sub(r"(title:.*)", f"\\1\ncover_image: {public_url}", content)
+                        # Add after title
+                        if re.search(r"^title:.*$", content, flags=re.MULTILINE):
+                            content = re.sub(r"^(title:.*)$", f"\\1\ncover_image: {public_url}", content, flags=re.MULTILINE)
                             print("Added new cover_image field")
                         else:
-                            # Fallback if title not found (rare in valid frontmatter)
-                            pass
-                else:
-                    # If NO cover image found in cover_images/, we might want to remove any existing one
-                    # if strictly following "separate folder" logic, but maybe safer to leave it if manually set?
-                    # The user said "I'll add the images in separate folder", implying if it's there, use it.
-                    # Previous logic removed cover_image because we were using content image.
-                    # Now we allow cover_image ONLY if it is in cover_images/.
-                    pass
+                            # Fallback if title not found (rare)
+                            print("Warning: Could not find title line to inject cover_image")
 
                 with open(filepath, "w", encoding="utf-8") as f:
                     f.write(content)
