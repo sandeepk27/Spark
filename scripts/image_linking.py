@@ -8,7 +8,7 @@ REPO_NAME = "Spark"
 BRANCH = "main"
 POSTS_DIR = "posts"
 IMAGES_DIR = "images"
-COVER_IMAGES_DIR = "cover_images"  # NEW DIRECTORY
+COVER_IMAGES_DIR = "cover-images"  # NEW DIRECTORY
 
 # Extensions to look for
 SUPPORTED_EXTENSIONS = [".png", ".jpg", ".jpeg", ".webp"]
