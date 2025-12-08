@@ -32,7 +32,9 @@ You are already posting to Dev.to and LinkedIn (great!).
 ## Automation
 The repository now contains:
 - `scripts/seo_check.py`: validaties your SEO metadata.
-- `scripts/image_linking.py`: Supports `linkedin_image: yes` to auto-link images for cross-posting.
+- `scripts/image_linking.py`:
+  - Supports `linkedin_image: yes` to auto-link content images for cross-posting.
+  - Supports `devto_cover: yes` to auto-link cover images from `cover_images/` folder.
 
 ## Zapier Integration
 To automate LinkedIn publishing with images:

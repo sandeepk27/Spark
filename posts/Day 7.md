@@ -5,6 +5,7 @@ published: true
 description: Essential of Pysaprk
 tags: 'dataengineering, python, spark, bigdata'
 linkedin_image: yes
+devto_cover: yes
 ---
 
 Welcome to Day 7 of your Spark Mastery journey!

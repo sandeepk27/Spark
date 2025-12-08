@@ -34,55 +34,61 @@ def process_files():
             with open(filepath, "r", encoding="utf-8") as f:
                 content = f.read()
 
-            # Check logic flags
-            should_process = (
-                "auto_image: true" in content or
-                "img: true" in content or
-                "linkedin_image: yes" in content or
-                "linkedin_image: true" in content
-            )
+            # Flags detection
+            has_auto_image = "auto_image: true" in content or "img: true" in content
+            has_linkedin_image = "linkedin_image: yes" in content or "linkedin_image: true" in content
+            has_devto_cover = "devto_cover: yes" in content or "cover: yes" in content
+
+            # Global Trigger
+            should_process = has_auto_image or has_linkedin_image or has_devto_cover
 
             if should_process:
                 print(f"Processing {filename}...")
                 base_name = os.path.splitext(filename)[0]
                 
                 # --- PROCESS CONTENT IMAGE (images/) ---
-                content_image_name = find_image(base_name, IMAGES_DIR)
-                if content_image_name:
-                    encoded_name = urllib.parse.quote(content_image_name)
-                    public_url = BASE_CONTENT_IMG_URL + encoded_name
+                # Triggered by: auto_image, img: true, linkedin_image
+                if has_auto_image or has_linkedin_image:
+                    content_image_name = find_image(base_name, IMAGES_DIR)
+                    if content_image_name:
+                        encoded_name = urllib.parse.quote(content_image_name)
+                        public_url = BASE_CONTENT_IMG_URL + encoded_name
 
-                    print(f"Found content image: {content_image_name}")
+                        print(f"Found content image: {content_image_name}")
 
-                    # Append to body if not present
-                    if public_url not in content:
-                        image_markdown = f"\n\n![{base_name}]({public_url})\n"
-                        content += image_markdown
-                        print(f"Appended content image to body of {filename}")
-                else:
-                    print(f"No content image found for {filename} in {IMAGES_DIR}/")
+                        # Append to body if not present
+                        if public_url not in content:
+                            image_markdown = f"\n\n![{base_name}]({public_url})\n"
+                            content += image_markdown
+                            print(f"Appended content image to body of {filename}")
+                    else:
+                        print(f"No content image found for {filename} in {IMAGES_DIR}/")
 
                 # --- PROCESS COVER IMAGE (cover_images/) ---
-                cover_image_name = find_image(base_name, COVER_IMAGES_DIR)
-                if cover_image_name:
-                    encoded_name = urllib.parse.quote(cover_image_name)
-                    public_url = BASE_COVER_IMG_URL + encoded_name
-                    
-                    print(f"Found cover image: {cover_image_name}")
-                    
-                    # Update or Add cover_image in frontmatter
-                    # Use robust regex with MULTILINE and start/end anchors
-                    if re.search(r"^cover_image:.*$", content, flags=re.MULTILINE):
-                        content = re.sub(r"^cover_image:.*$", f"cover_image: {public_url}", content, flags=re.MULTILINE)
-                        print("Updated existing cover_image")
-                    else:
-                        # Add after title
-                        if re.search(r"^title:.*$", content, flags=re.MULTILINE):
-                            content = re.sub(r"^(title:.*)$", f"\\1\ncover_image: {public_url}", content, flags=re.MULTILINE)
-                            print("Added new cover_image field")
+                # Triggered ONLY by: devto_cover: yes or cover: yes
+                if has_devto_cover:
+                    cover_image_name = find_image(base_name, COVER_IMAGES_DIR)
+                    if cover_image_name:
+                        encoded_name = urllib.parse.quote(cover_image_name)
+                        public_url = BASE_COVER_IMG_URL + encoded_name
+
+                        print(f"Found cover image: {cover_image_name}")
+
+                        # Update or Add cover_image in frontmatter
+                        # Use robust regex with MULTILINE and start/end anchors
+                        if re.search(r"^cover_image:.*$", content, flags=re.MULTILINE):
+                            content = re.sub(r"^cover_image:.*$", f"cover_image: {public_url}", content, flags=re.MULTILINE)
+                            print("Updated existing cover_image")
                         else:
-                            # Fallback if title not found (rare)
-                            print("Warning: Could not find title line to inject cover_image")
+                            # Add after title
+                            if re.search(r"^title:.*$", content, flags=re.MULTILINE):
+                                content = re.sub(r"^(title:.*)$", f"\\1\ncover_image: {public_url}", content, flags=re.MULTILINE)
+                                print("Added new cover_image field")
+                            else:
+                                # Fallback if title not found (rare)
+                                print("Warning: Could not find title line to inject cover_image")
+                    else:
+                        print(f"Warning: devto_cover: yes set but no image found in {COVER_IMAGES_DIR}/")
 
                 with open(filepath, "w", encoding="utf-8") as f:
                     f.write(content)
