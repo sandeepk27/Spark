@@ -1,6 +1,6 @@
 ---
 title: "\U0001F525 Day 7: PySpark Joins, Unions, and GroupBy Guide"
-cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/images/Day%207.png
+cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover_images/Day%207.png
 published: true
 description: Essential of Pysaprk
 tags: 'dataengineering, python, spark, bigdata'
@@ -133,3 +133,6 @@ Today we learnt:
 - broadcast join optimization
 
 Follow for more such content. Let me know if I missed anything in comments. Thank you!!
+
+
+![Day 7](https://raw.githubusercontent.com/sandeepk27/Spark/main/images/Day%207.png)
