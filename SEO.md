@@ -35,6 +35,7 @@ The repository now contains:
 - `scripts/image_linking.py`:
   - Supports `linkedin_image: yes` to auto-link content images for cross-posting.
   - Supports `devto_cover: yes` to auto-link cover images from `cover_images/` folder.
+  - Supports `devto_content_image: no` to hide the content image on Dev.to while still passing it to Zapier (LinkedIn).
 
 ## Zapier Integration
 To automate LinkedIn publishing with images:
