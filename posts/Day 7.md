@@ -1,5 +1,5 @@
 ---
-title: "\U0001F525 Day 7: PySpark Joins, Unions, and GroupBy in PySpark - The Core ETL Operations"
+title: "PySpark Joins and Unions Guide"
 cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%207.jpg'
 published: false
 description: Essential of Pysaprk
