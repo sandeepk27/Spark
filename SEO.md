@@ -33,3 +33,15 @@ You are already posting to Dev.to and LinkedIn (great!).
 The repository now contains:
 - `scripts/seo_check.py`: validaties your SEO metadata.
 - `scripts/image_linking.py`: Supports `linkedin_image: yes` to auto-link images for cross-posting.
+
+## Zapier Integration
+To automate LinkedIn publishing with images:
+1. Create a Zapier Workflow: Trigger on **RSS by Zapier** (New Item in Feed) using your Dev.to feed (`https://dev.to/feed/YOUR_USERNAME`).
+2. Add a **Code by Zapier** (Run Python) step.
+3. Copy the code from `zapier_config/zapier_code_step.py` into the code box.
+4. This script extracts the `image_url` from your post body (injected by our GitHub Action).
+5. Add a **LinkedIn** (Create Share Update) step.
+   - **Commentary:** Use `description`.
+   - **Content Url:** Map this to `link` from the Python step (This ensures the blog is the main attachment).
+   - **Image:** Map this to `image_url` from the Python step.
+     - *Note:* If `image_url` is empty (no custom image), Zapier usually falls back to scraping the `Content Url`, which is the desired behavior for "no image" posts.
