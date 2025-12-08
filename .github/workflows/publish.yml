@@ -3,7 +3,10 @@ name: Publish to Dev.to
 on:
   push:
     branches:
-      - main  # Change this if your default branch is 'master'
+      - main
+
+permissions:
+  contents: write  # Needed so the script can save the new link to the file
 
 jobs:
   publish:
@@ -11,10 +14,31 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Run Image Linker Script
+        run: |
+          python scripts/image_linking.py
+          
+          # Configure Git to save the changes made by the script
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Check if the script modified anything
+          if [[ `git status --porcelain` ]]; then
+            git add posts/*.md
+            git commit -m "Auto-inject cover image link [skip ci]"
+            git push
+          else
+            echo "No images needed injection."
+          fi
+
       - name: Publish to Dev.to
         uses: sinedied/publish-devto@v2
         with:
           devto_key: ${{ secrets.DEVTO_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          files: 'posts/*.md' # This looks for markdown files in a 'posts' folder
-          
+          files: 'posts/*.md'
