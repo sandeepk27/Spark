@@ -1,12 +1,11 @@
 ---
 title: "\U0001F525 Day 7: PySpark Joins, Unions, and GroupBy Guide"
-cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover_images/Day 7.jpg'
-published: true
+cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover_images/Day%207.png
+published: false
 description: Essential of Pysaprk
 tags: 'dataengineering, python, spark, bigdata'
-linkedin_image: 'no'
-id: 3091975
-date: '2025-12-08T10:46:18Z'
+linkedin_image: no
+devto_cover: yes
 ---
 
 Welcome to Day 7 of your Spark Mastery journey!
