@@ -7,14 +7,9 @@ import re
 # CONFIGURATION
 # Replace with your Dev.to username
 DEVTO_USERNAME = "sandeepk27"
-# GitHub Raw URL base for your images (ensure this matches your repo)
-REPO_USER = "sandeepk27"
-REPO_NAME = "Spark"
-BRANCH = "main"
-IMAGES_DIR = "images"
-BASE_IMG_URL = f"https://raw.githubusercontent.com/{REPO_USER}/{REPO_NAME}/{BRANCH}/{IMAGES_DIR}/"
 
 def get_latest_post():
+    # Fetch the latest article from Dev.to API
     url = f"https://dev.to/api/articles?username={DEVTO_USERNAME}&per_page=1"
     response = requests.get(url)
     if response.status_code == 200:
@@ -28,51 +23,38 @@ def main():
     if not article:
         return {"status": "no_article_found"}
 
-    # Extract Data
+    # Extract Standard Data
     title = article.get("title")
     description = article.get("description")
     url = article.get("url")
-    body_markdown = article.get("body_markdown", "") # API usually returns this
+    body_markdown = article.get("body_markdown", "")
 
-    # Check for "linkedin_image: yes" or similar flags in the raw markdown if available,
-    # OR simply check if we have a matching image in our repo based on the title.
-    # The user requirement: "if a linkedin images tag is yes then accordingly it should pick the images from images folder"
-
-    # Since Zapier might not see the raw markdown frontmatter easily via the standard RSS/API unless authenticated or parsing raw,
-    # we can infer availability if the local script successfully appended the image link to the body.
+    # Logic:
+    # 1. We ALWAYS want to post the blog link (`url`).
+    # 2. If an image was injected into the body (implying `linkedin_image: yes` was processed locally),
+    #    we extract that image URL to use it as the custom thumbnail.
+    # 3. If no image was injected (implying `linkedin_image: no` or missing),
+    #    we return None for image_url, so LinkedIn uses the default scraper preview.
 
     image_url = None
 
-    # Strategy 1: Look for the image appended by our local script in the body
-    # The script appends: ![Title](.../images/Title.png)
-    # Regex to find our specific GitHub raw image links
+    # Look for the image appended by our local script in the body
+    # Pattern: ![Title](https://raw.githubusercontent.com/.../images/...)
+    # This proves the local script found 'linkedin_image: yes' (or similar) and injected the content image.
     img_match = re.search(r"!\[.*?\]\((https://raw\.githubusercontent\.com/[^)]+/images/[^)]+)\)", body_markdown)
 
     if img_match:
         image_url = img_match.group(1)
-    else:
-        # Strategy 2: Construct the URL manually if we know the convention and assume it exists if the flag was conceptually "yes"
-        # But checking existence requires a request.
-        # Let's try to construct it based on the title (cleaning special chars)
-        # This mirrors the python script's logic roughly
-        clean_title = re.sub(r'[^\w\s-]', '', title).strip() # simplified cleaning
-        # NOTE: The local script uses filename, which matches the markdown filename.
-        # The Dev.to API title might differ slightly if changed.
-        # Strategy 1 is much safer.
-        pass
 
     return {
         "title": title,
         "description": description,
-        "link": url,
-        "image_url": image_url,
-        "has_image": "yes" if image_url else "no"
+        "link": url,         # The Blog Link (Main content)
+        "image_url": image_url, # Custom Image (if "yes"), else None/Null
+        "use_custom_image": "yes" if image_url else "no"
     }
 
-# Zapier requires the output to be a dictionary assigned to 'output'
-# In the Zapier editor, you don't use 'def main()', just write the code.
-# But for this file, we simulate it.
-
+# Zapier Output Handling
 try:
     output = main()
 except Exception as e:

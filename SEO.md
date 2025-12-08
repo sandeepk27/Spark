@@ -41,6 +41,7 @@ To automate LinkedIn publishing with images:
 3. Copy the code from `zapier_config/zapier_code_step.py` into the code box.
 4. This script extracts the `image_url` from your post body (injected by our GitHub Action).
 5. Add a **LinkedIn** (Create Share Update) step.
-   - **Commentary:** Use `description` + `link`.
-   - **Image:** Use `image_url` from the Python step.
-   - **Content Url:** Use `link`.
+   - **Commentary:** Use `description`.
+   - **Content Url:** Map this to `link` from the Python step (This ensures the blog is the main attachment).
+   - **Image:** Map this to `image_url` from the Python step.
+     - *Note:* If `image_url` is empty (no custom image), Zapier usually falls back to scraping the `Content Url`, which is the desired behavior for "no image" posts.
