@@ -23,8 +23,15 @@ def process_files():
             with open(filepath, "r", encoding="utf-8") as f:
                 content = f.read()
 
-            # Check for auto_image: true OR img: true
-            if "auto_image: true" in content or "img: true" in content:
+            # Check for auto_image: true, img: true, or linkedin_image: yes/true
+            should_process = (
+                "auto_image: true" in content or
+                "img: true" in content or
+                "linkedin_image: yes" in content or
+                "linkedin_image: true" in content
+            )
+
+            if should_process:
                 print(f"Processing {filename}...")
                 
                 base_name = os.path.splitext(filename)[0]

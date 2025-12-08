@@ -1,8 +1,10 @@
 ---
-title: "\U0001F525 Day 7: Mastering Joins, Unions, and GroupBy in PySpark - The Core ETL Operations"
+title: "\U0001F525 Day 7: PySpark Joins, Unions, and GroupBy Guide"
+cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/images/Day%207.png
 published: true
 description: Essential of Pysaprk
 tags: 'dataengineering, python, spark, bigdata'
+linkedin_image: yes
 ---
 
 Welcome to Day 7 of your Spark Mastery journey!
