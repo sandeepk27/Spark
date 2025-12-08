@@ -47,3 +47,8 @@ To automate LinkedIn publishing with images:
    - **Content Url:** Map this to `link` from the Python step (This ensures the blog is the main attachment).
    - **Image:** Map this to `image_url` from the Python step.
      - *Note:* If `image_url` is empty (no custom image), Zapier usually falls back to scraping the `Content Url`, which is the desired behavior for "no image" posts.
+
+### Image Troubleshooting
+- **Visibility:** Images hosted on GitHub (`raw.githubusercontent.com`) require the repository to be **Public**. If your repo is private, Dev.to cannot access the images.
+- **Dimensions:** While Dev.to accepts most sizes, **1000x420** is optimal for cover images to avoid cropping. For content images, any standard size works.
+- **File Validity:** Ensure your images are valid files (not 0kb or corrupted).
