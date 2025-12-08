@@ -42,3 +42,26 @@ jobs:
           devto_key: ${{ secrets.DEVTO_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           files: 'posts/*.md'
+
+      - name: Install dependencies for LinkedIn script
+        run: pip install requests
+
+      - name: Pull latest changes
+        run: git pull origin main
+
+      - name: Publish to LinkedIn
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+        run: python scripts/publish_linkedin.py
+
+      - name: Commit LinkedIn Status
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          if [[ `git status --porcelain` ]]; then
+            git add posts/*.md
+            git commit -m "Update LinkedIn status [skip ci]"
+            git push
+          else
+            echo "No changes to commit."
+          fi

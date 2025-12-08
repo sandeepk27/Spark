@@ -23,7 +23,8 @@ def process_files():
             with open(filepath, "r", encoding="utf-8") as f:
                 content = f.read()
 
-            if "auto_image: true" in content:
+            # Check for auto_image: true OR img: true
+            if "auto_image: true" in content or "img: true" in content:
                 print(f"Processing {filename}...")
                 
                 base_name = os.path.splitext(filename)[0]
