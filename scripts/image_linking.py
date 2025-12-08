@@ -39,6 +39,10 @@ def process_files():
             has_linkedin_image = "linkedin_image: yes" in content or "linkedin_image: true" in content
             has_devto_cover = "devto_cover: yes" in content or "cover: yes" in content
 
+            # New flag to suppress Dev.to visibility
+            # If devto_content_image: no, we won't show it visible
+            show_content_image = not ("devto_content_image: no" in content)
+
             # Global Trigger
             should_process = has_auto_image or has_linkedin_image or has_devto_cover
 
@@ -56,11 +60,18 @@ def process_files():
 
                         print(f"Found content image: {content_image_name}")
 
-                        # Append to body if not present
+                        # Prepare injection strings
+                        visible_markdown = f"\n\n![{base_name}]({public_url})\n"
+                        hidden_markdown = f"\n\n<!-- LINKEDIN_IMAGE_SOURCE: {public_url} -->\n"
+
+                        # Check logic
                         if public_url not in content:
-                            image_markdown = f"\n\n![{base_name}]({public_url})\n"
-                            content += image_markdown
-                            print(f"Appended content image to body of {filename}")
+                            if show_content_image:
+                                content += visible_markdown
+                                print(f"Appended visible content image to {filename}")
+                            else:
+                                content += hidden_markdown
+                                print(f"Appended hidden content image to {filename}")
                     else:
                         print(f"No content image found for {filename} in {IMAGES_DIR}/")
 

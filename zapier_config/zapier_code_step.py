@@ -31,20 +31,21 @@ def main():
 
     # Logic:
     # 1. We ALWAYS want to post the blog link (`url`).
-    # 2. If an image was injected into the body (implying `linkedin_image: yes` was processed locally),
-    #    we extract that image URL to use it as the custom thumbnail.
-    # 3. If no image was injected (implying `linkedin_image: no` or missing),
-    #    we return None for image_url, so LinkedIn uses the default scraper preview.
+    # 2. We extract image URL if available.
 
     image_url = None
 
-    # Look for the image appended by our local script in the body
-    # Pattern: ![Title](https://raw.githubusercontent.com/.../images/...)
-    # This proves the local script found 'linkedin_image: yes' (or similar) and injected the content image.
-    img_match = re.search(r"!\[.*?\]\((https://raw\.githubusercontent\.com/[^)]+/images/[^)]+)\)", body_markdown)
+    # Priority 1: Check for hidden comment (injected when devto_content_image: no)
+    # Format: <!-- LINKEDIN_IMAGE_SOURCE: https://... -->
+    hidden_match = re.search(r"<!-- LINKEDIN_IMAGE_SOURCE: (https://raw\.githubusercontent\.com/[^ ]+) -->", body_markdown)
+    if hidden_match:
+        image_url = hidden_match.group(1)
 
-    if img_match:
-        image_url = img_match.group(1)
+    # Priority 2: Check for visible image (injected when devto_content_image: yes or default)
+    if not image_url:
+        img_match = re.search(r"!\[.*?\]\((https://raw\.githubusercontent\.com/[^)]+/images/[^)]+)\)", body_markdown)
+        if img_match:
+            image_url = img_match.group(1)
 
     return {
         "title": title,
