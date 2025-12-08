@@ -135,6 +135,3 @@ Today we learnt:
 - broadcast join optimization
 
 Follow for more such content. Let me know if I missed anything in comments. Thank you!!
-
-
-![Day 7](https://raw.githubusercontent.com/sandeepk27/Spark/main/images/Day%207.png)
