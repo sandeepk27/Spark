@@ -1,5 +1,5 @@
 ---
-title: 'Day 8: Spark Join Optimization'
+title: 'Day 8: Accelerating Spark Joins - Broadcast, Shuffle Optimization & Skew Handling'
 published: true
 description: 'Learn how to optimize Spark Joins using broadcast variables, skew handling, and strategic repartitioning.'
 tags: 'dataengineering, python, spark, bigdata'
