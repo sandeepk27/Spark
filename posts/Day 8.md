@@ -1,5 +1,5 @@
 ---
-title: "Spark Join Optimization"
+title: "\U0001F525 Day 8: Spark Join Optimization"
 published: true
 description: Essential of Pysaprk
 tags: 'dataengineering, python, spark, bigdata'
