@@ -2,7 +2,7 @@
 title: "PySpark Joins and Unions Guide"
 cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%207.jpg'
 published: true
-description: Essential of Pysaprk
+description: A comprehensive guide to PySpark Joins, Unions, and GroupBy operations for efficient ETL pipelines.
 tags: 'dataengineering, python, spark, bigdata'
 linkedin_image: 'no'
 devto_cover: 'yes'
