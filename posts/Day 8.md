@@ -1,7 +1,7 @@
 ---
-title: "\U0001F525 Day 8: Spark Join Optimization"
+title: "Spark Join Optimization"
 published: true
-description: Essential of Pysaprk
+description: Learn how to optimize Spark Joins using broadcast variables, skew handling, and strategic repartitioning.
 tags: 'dataengineering, python, spark, bigdata'
 linkedin_image: 'no'
 devto_cover: 'no'
