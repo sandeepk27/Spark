@@ -1,5 +1,5 @@
 ---
-title: Spark Join Optimization
+title: "Day 8: Spark Join Optimization"
 published: true
 description: 'Learn how to optimize Spark Joins using broadcast variables, skew handling, and strategic repartitioning.'
 tags: 'dataengineering, python, spark, bigdata'
