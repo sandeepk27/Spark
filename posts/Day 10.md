@@ -5,6 +5,8 @@ description: 'Learn how to optimize Spark Joins using broadcast variables, skew 
 tags: 'python, dataengineering, spark, bigdata'
 linkedin_image: 'no'
 devto_cover: 'no'
+id: 3095462
+date: '2025-12-09T18:48:03Z'
 ---
 
 Welcome to Day 10 of the Spark Mastery Series!
