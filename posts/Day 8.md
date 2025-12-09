@@ -1,10 +1,12 @@
 ---
-title: "Spark Join Optimization"
+title: Spark Join Optimization
 published: true
-description: Learn how to optimize Spark Joins using broadcast variables, skew handling, and strategic repartitioning.
+description: 'Learn how to optimize Spark Joins using broadcast variables, skew handling, and strategic repartitioning.'
 tags: 'dataengineering, python, spark, bigdata'
 linkedin_image: 'no'
 devto_cover: 'no'
+id: 3094403
+date: '2025-12-09T10:19:08Z'
 ---
 
 Welcome to Day 8 of the Spark Mastery Series.

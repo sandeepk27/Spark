@@ -1,11 +1,13 @@
 ---
-title: "PySpark Joins and Unions Guide"
+title: PySpark Joins and Unions Guide
 cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%207.jpg'
 published: true
-description: A comprehensive guide to PySpark Joins, Unions, and GroupBy operations for efficient ETL pipelines.
+description: 'A comprehensive guide to PySpark Joins, Unions, and GroupBy operations for efficient ETL pipelines.'
 tags: 'dataengineering, python, spark, bigdata'
 linkedin_image: 'no'
 devto_cover: 'yes'
+id: 3094404
+date: '2025-12-09T10:19:09Z'
 ---
 
 Welcome to Day 7 of your Spark Mastery journey!
