@@ -3,6 +3,8 @@ title: "\U0001F525 Day 6: Essential PySpark DataFrame Transformations"
 published: true
 description: Essential of Pysaprk
 tags: 'dataengineering, python, spark, bigdata'
+linkedin_image: 'no'
+devto_cover: 'yes'
 id: 3089341
 date: '2025-12-06T17:31:40Z'
 ---
