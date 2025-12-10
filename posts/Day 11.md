@@ -13,7 +13,7 @@ date: '2025-12-10T18:48:50Z'
 Welcome to Day 11 of the Spark Mastery Series!
 Today we discuss one of the most underrated but most impactful decisions in data engineering:
 
-> Which file format should you use in Spark?
+`Which file format should you use in Spark?`
 
 Choosing the wrong format can make your job 10x slower and 5x more expensive. Let's break down the formats clearly.
 
