@@ -46,7 +46,6 @@ def resize_for_devto(image_path):
             print(f"Resizing {image_path} from {img.size} to ({DEVTO_WIDTH}, {DEVTO_HEIGHT})...")
             
             # ImageOps.fit performs a 'Smart Crop' (Center Crop)
-            # It scales the image to fill the requested size, then crops the excess.
             processed_img = ImageOps.fit(img, (DEVTO_WIDTH, DEVTO_HEIGHT), method=Image.Resampling.LANCZOS, centering=(0.5, 0.5))
             
             # Save it back overwriting the original
@@ -98,7 +97,7 @@ def process_files():
                 if has_devto_cover:
                     cover_image_name, cover_image_path = find_image(base_name, COVER_IMAGES_DIR)
                     if cover_image_name:
-                        # >>> NEW: RESIZE STEP <<<
+                        # RESIZE STEP
                         resize_for_devto(cover_image_path)
                         
                         encoded_name = urllib.parse.quote(cover_image_name)
@@ -114,11 +113,8 @@ def process_files():
                     else:
                         print(f"Warning: Cover image requested but not found in {COVER_IMAGES_DIR}")
 
+                # This write block must be aligned with the 'if should_process:' block
                 with open(filepath, "w", encoding="utf-8") as f:
-                    f.write(content)
-
-if __name__ == "__main__":
-    process_files()
                     f.write(content)
 
 if __name__ == "__main__":
