@@ -1,5 +1,5 @@
 ---
-title: '\U0001F525 Day 10: Partitioning vs Bucketing - The Spark Optimization Guide Every Data Engineer Needs'
+title: '🔥 Day 10: Partitioning vs Bucketing - The Spark Optimization Guide Every Data Engineer Needs'
 published: true
 description: 'Learn how to optimize Spark Joins using broadcast variables, skew handling, and strategic repartitioning.'
 tags: 'python, dataengineering, spark, bigdata'
