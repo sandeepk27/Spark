@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'notes/**'      # Ignore your daily notes folder
+      - 'README.md'
 
 permissions:
   contents: write  # Needed so the script can save the new link to the file
@@ -21,6 +24,7 @@ jobs:
 
       - name: Run Image Linker Script
         run: |
+          # Make sure the filename matches your actual python file location
           python scripts/image_linking.py
           
           # Configure Git to save the changes made by the script
