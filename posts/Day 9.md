@@ -1,5 +1,6 @@
 ---
 title: 'Day 9: Spark SQL Deep Dive - Temp Views, Query Execution & Optimization Tips for Data Engineers'
+cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%209.jpg'
 published: true
 description: 'Learn how to optimize Spark Joins using broadcast variables, skew handling, and strategic repartitioning.'
 tags: 'python, dataengineering, spark, bigdata'
