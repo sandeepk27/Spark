@@ -4,7 +4,7 @@ published: true
 description: 'Learn how to optimize Spark Joins using broadcast variables, skew handling, and strategic repartitioning.'
 tags: 'python, dataengineering, spark, bigdata'
 linkedin_image: 'no'
-devto_cover: 'no'
+devto_cover: 'yes'
 id: 3095462
 date: '2025-12-09T18:48:03Z'
 ---
