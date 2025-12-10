@@ -1,6 +1,6 @@
 ---
 title: 'Day 11: Choosing the Right File Format in Spark'
-cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2011.jpg
+cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2011.jpg'
 published: true
 description: 'Learn how to optimize Spark Joins using broadcast variables, skew handling, and strategic repartitioning.'
 tags: 'python, dataengineering, spark, bigdata'
