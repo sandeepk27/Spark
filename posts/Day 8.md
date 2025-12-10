@@ -1,6 +1,6 @@
 ---
 title: 'Day 8: Accelerating Spark Joins - Broadcast, Shuffle Optimization & Skew Handling'
-cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%208.jpg'
+cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%208.jpg
 published: true
 description: 'Learn how to optimize Spark Joins using broadcast variables, skew handling, and strategic repartitioning.'
 tags: 'dataengineering, python, spark, bigdata'

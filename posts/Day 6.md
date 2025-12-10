@@ -1,6 +1,6 @@
 ---
 title: "\U0001F525 Day 6: Essential PySpark DataFrame Transformations"
-cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%206.jpg'
+cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%206.jpg
 published: true
 description: Essential of Pysaprk
 tags: 'dataengineering, python, spark, bigdata'
