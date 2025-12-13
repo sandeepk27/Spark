@@ -11,7 +11,7 @@ date: '2025-12-13T14:05:23Z'
 ---
 
 Welcome to Day 13 of the Spark Mastery Series.
-Today we cover Window Functions — one of the most powerful and commonly asked topics in Spark interviews.
+Today we cover Window Functions - one of the most powerful and commonly asked topics in Spark interviews.
 
 If you know window functions, you can:
 - Deduplicate records
