@@ -1,11 +1,13 @@
 ---
 title: 'Day 14: Building a Real Retail Analytics Pipeline Using Spark Window Functions'
-cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2014.jpg
+cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2014.jpg'
 published: true
 description: Building a Real Retail Analytics Pipeline Using Spark
 tags: 'python, dataengineering, spark, bigdata'
 linkedin_image: 'no'
 devto_cover: 'yes'
+id: 3104806
+date: '2025-12-14T14:03:41Z'
 ---
 
 Welcome to Day 14 of the Spark Mastery Series.
