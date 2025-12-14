@@ -1,6 +1,6 @@
 ---
 title: 'Day 13: Window Functions in PySpark'
-cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2013.jpg'
+cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2013.jpg
 published: true
 description: Learn how UDF vs Pandas UDF — Why 80% of Spark Developers Use UDFs Wrong (And How to Fix It)
 tags: 'python, dataengineering, spark, bigdata'
