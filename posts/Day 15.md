@@ -1,11 +1,13 @@
 ---
 title: 'Day 15: Running Spark in the Cloud — Dataproc vs Databricks'
-cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2015.jpg
+cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2015.jpg'
 published: true
 description: Spark in The Vloud
 tags: 'python, dataengineering, spark, bigdata'
 linkedin_image: 'no'
 devto_cover: 'yes'
+id: 3107029
+date: '2025-12-15T17:08:23Z'
 ---
 
 Welcome to Day 15 of the Spark Mastery Series. Until now, we focused on Spark internals and APIs.
