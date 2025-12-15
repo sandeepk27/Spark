@@ -1,6 +1,6 @@
 ---
 title: 'Day 15: Running Spark in the Cloud - Dataproc vs Databricks'
-cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2015.jpg
+cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2015.jpg'
 published: true
 description: Spark in The Vloud
 tags: 'python, dataengineering, spark, bigdata'
