@@ -1,11 +1,13 @@
 ---
 title: 'Day 16: Delta Lake Explained - How Spark Finally Became Reliable for Production ETL'
-cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2016.jpg
+cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2016.jpg'
 published: true
 description: Delta Lake
 tags: 'python, dataengineering, spark, bigdata'
 linkedin_image: 'no'
 devto_cover: 'yes'
+id: 3109333
+date: '2025-12-16T17:18:06Z'
 ---
 
 Welcome to Day 16 of the Spark Mastery Series.
