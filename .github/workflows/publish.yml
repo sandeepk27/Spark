@@ -4,12 +4,9 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - 'notes/**'
-      - 'README.md'
 
 permissions:
-  contents: write
+  contents: write  # Needed so the script can save the new link to the file
 
 jobs:
   publish:
@@ -22,25 +19,21 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install Dependencies
-        run: |
-          pip install Pillow
-
-      - name: Run Image Linker & Resizer
+      - name: Run Image Linker Script
         run: |
           python scripts/image_linking.py
           
+          # Configure Git to save the changes made by the script
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Check for changes
+          # Check if the script modified anything
           if [[ `git status --porcelain` ]]; then
-            # We add markdown files AND the resized images
-            git add posts/*.md cover-images/*
-            git commit -m "Auto-inject and Resize images [skip ci]"
+            git add posts/*.md
+            git commit -m "Auto-inject cover image link [skip ci]"
             git push
           else
-            echo "No changes needed."
+            echo "No images needed injection."
           fi
 
       - name: Publish to Dev.to

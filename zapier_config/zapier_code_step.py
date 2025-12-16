@@ -3,10 +3,15 @@
 
 import requests
 import re
+from datetime import datetime, timezone
 
 # CONFIGURATION
 # Replace with your Dev.to username
 DEVTO_USERNAME = "sandeepk27"
+# Maximum age in hours to consider a post "new".
+# If a post was published older than this threshold, we skip posting to LinkedIn.
+# This prevents reposting old articles if content is updated.
+MAX_AGE_HOURS = 24
 
 def get_latest_post():
     # Fetch the latest article from Dev.to API
@@ -18,25 +23,49 @@ def get_latest_post():
             return articles[0]
     return None
 
+def check_age(published_at_str):
+    """Returns True if the post is recent (within MAX_AGE_HOURS), False otherwise."""
+    if not published_at_str:
+        return True # Default to processing if no date found
+
+    try:
+        # Dev.to format: "2025-12-08T16:14:15Z"
+        # Parse ISO format (handling Z for UTC)
+        published_at = datetime.strptime(published_at_str.replace("Z", "+0000"), "%Y-%m-%dT%H:%M:%S%z")
+        now = datetime.now(timezone.utc)
+
+        diff = now - published_at
+        hours_old = diff.total_seconds() / 3600
+
+        return hours_old < MAX_AGE_HOURS
+    except Exception as e:
+        return True # Fallback on error
+
 def main():
     article = get_latest_post()
     if not article:
-        return {"status": "no_article_found"}
+        return {"status": "no_article_found", "should_post": "no"}
 
     # Extract Standard Data
     title = article.get("title")
     description = article.get("description")
     url = article.get("url")
+    published_at = article.get("published_at")
     body_markdown = article.get("body_markdown", "")
 
-    # Logic:
-    # 1. We ALWAYS want to post the blog link (`url`).
-    # 2. We extract image URL if available.
+    # Logic 1: Check Age (Prevent reposting on edits)
+    is_new = check_age(published_at)
+    if not is_new:
+        return {
+            "status": "skipped_old_post",
+            "should_post": "no",
+            "reason": f"Post is older than {MAX_AGE_HOURS} hours"
+        }
 
+    # Logic 2: Extract Image
     image_url = None
 
     # Priority 1: Check for hidden comment (injected when devto_content_image: no)
-    # Format: <!-- LINKEDIN_IMAGE_SOURCE: https://... -->
     hidden_match = re.search(r"<!-- LINKEDIN_IMAGE_SOURCE: (https://raw\.githubusercontent\.com/[^ ]+) -->", body_markdown)
     if hidden_match:
         image_url = hidden_match.group(1)
@@ -50,15 +79,16 @@ def main():
     return {
         "title": title,
         "description": description,
-        "link": url,         # The Blog Link (Main content)
-        "image_url": image_url, # Custom Image (if "yes"), else None/Null
-        "use_custom_image": "yes" if image_url else "no"
+        "link": url,
+        "image_url": image_url,
+        "use_custom_image": "yes" if image_url else "no",
+        "should_post": "yes"
     }
 
 # Zapier Output Handling
 try:
     output = main()
 except Exception as e:
-    output = {"error": str(e)}
+    output = {"error": str(e), "should_post": "no"}
 
 print(output)

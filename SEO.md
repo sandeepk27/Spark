@@ -42,8 +42,10 @@ To automate LinkedIn publishing with images:
 1. Create a Zapier Workflow: Trigger on **RSS by Zapier** (New Item in Feed) using your Dev.to feed (`https://dev.to/feed/YOUR_USERNAME`).
 2. Add a **Code by Zapier** (Run Python) step.
 3. Copy the code from `zapier_config/zapier_code_step.py` into the code box.
-4. This script extracts the `image_url` from your post body (injected by our GitHub Action).
-5. Add a **LinkedIn** (Create Share Update) step.
+4. This script extracts the `image_url` and checks if the post is new (to avoid reposting edits).
+5. Add a **Filter by Zapier** step:
+   - Only continue if `should_post` (Text) Matches Exactly `yes`.
+6. Add a **LinkedIn** (Create Share Update) step.
    - **Commentary:** Use `description`.
    - **Content Url:** Map this to `link` from the Python step (This ensures the blog is the main attachment).
    - **Image:** Map this to `image_url` from the Python step.

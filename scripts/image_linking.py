@@ -1,7 +1,6 @@
 import os
 import re
 import urllib.parse
-from PIL import Image, ImageOps  # Requires: pip install Pillow
 
 # CONFIGURATION
 REPO_USER = "sandeepk27"
@@ -9,51 +8,23 @@ REPO_NAME = "Spark"
 BRANCH = "main"
 POSTS_DIR = "posts"
 IMAGES_DIR = "images"
-COVER_IMAGES_DIR = "cover-images"
+COVER_IMAGES_DIR = "cover-images"  # NEW DIRECTORY
 
-# Dev.to Recommended Dimensions
-DEVTO_WIDTH = 1000
-DEVTO_HEIGHT = 420
-
+# Extensions to look for
 SUPPORTED_EXTENSIONS = [".png", ".jpg", ".jpeg", ".webp"]
 
+# Base URLs
 BASE_CONTENT_IMG_URL = f"https://raw.githubusercontent.com/{REPO_USER}/{REPO_NAME}/{BRANCH}/{IMAGES_DIR}/"
 BASE_COVER_IMG_URL = f"https://raw.githubusercontent.com/{REPO_USER}/{REPO_NAME}/{BRANCH}/{COVER_IMAGES_DIR}/"
 
 def find_image(base_name, search_dir):
+    """Helper to find an image file with supported extensions."""
     for ext in SUPPORTED_EXTENSIONS:
         potential_image = base_name + ext
         potential_path = os.path.join(search_dir, potential_image)
         if os.path.exists(potential_path):
-            return potential_image, potential_path
-    return None, None
-
-def check_flag(flag_name, content):
-    pattern = fr"{flag_name}:\s*['\"]?(yes|true|on)['\"]?"
-    return bool(re.search(pattern, content, re.IGNORECASE))
-
-def resize_for_devto(image_path):
-    """
-    Resizes and center-crops the image to 1000x420px.
-    Overwrites the original file.
-    """
-    try:
-        with Image.open(image_path) as img:
-            # Check if resize is actually needed to save processing time
-            if img.size == (DEVTO_WIDTH, DEVTO_HEIGHT):
-                return
-
-            print(f"Resizing {image_path} from {img.size} to ({DEVTO_WIDTH}, {DEVTO_HEIGHT})...")
-            
-            # ImageOps.fit performs a 'Smart Crop' (Center Crop)
-            processed_img = ImageOps.fit(img, (DEVTO_WIDTH, DEVTO_HEIGHT), method=Image.Resampling.LANCZOS, centering=(0.5, 0.5))
-            
-            # Save it back overwriting the original
-            processed_img.save(image_path)
-            print(f"✅ Resize successful: {image_path}")
-            
-    except Exception as e:
-        print(f"❌ Failed to resize image {image_path}: {e}")
+            return potential_image
+    return None
 
 def process_files():
     for filename in os.listdir(POSTS_DIR):
@@ -63,57 +34,73 @@ def process_files():
             with open(filepath, "r", encoding="utf-8") as f:
                 content = f.read()
 
-            has_auto_image = check_flag("auto_image", content) or check_flag("img", content)
-            has_linkedin_image = check_flag("linkedin_image", content)
-            has_devto_cover = check_flag("devto_cover", content) or check_flag("cover", content)
-            
-            hide_content_image = bool(re.search(r"devto_content_image:\s*['\"]?(no|false)['\"]?", content, re.IGNORECASE))
-            show_content_image = not hide_content_image
+            # Flags detection
+            has_auto_image = "auto_image: true" in content or "img: true" in content
+            has_linkedin_image = "linkedin_image: yes" in content or "linkedin_image: true" in content
+            has_devto_cover = "devto_cover: yes" in content or "cover: yes" in content
 
+            # New flag to suppress Dev.to visibility
+            # If devto_content_image: no, we won't show it visible
+            show_content_image = not ("devto_content_image: no" in content)
+
+            # Global Trigger
             should_process = has_auto_image or has_linkedin_image or has_devto_cover
 
             if should_process:
                 print(f"Processing {filename}...")
                 base_name = os.path.splitext(filename)[0]
                 
-                # --- 1. CONTENT IMAGE ---
+                # --- PROCESS CONTENT IMAGE (images/) ---
+                # Triggered by: auto_image, img: true, linkedin_image
                 if has_auto_image or has_linkedin_image:
-                    content_image_name, _ = find_image(base_name, IMAGES_DIR)
+                    content_image_name = find_image(base_name, IMAGES_DIR)
                     if content_image_name:
                         encoded_name = urllib.parse.quote(content_image_name)
                         public_url = BASE_CONTENT_IMG_URL + encoded_name
-                        
-                        visible_markdown = f"\n\n![{base_name}]({public_url})\n"
-                        hidden_markdown = f"\n\n\n"
 
+                        print(f"Found content image: {content_image_name}")
+
+                        # Prepare injection strings
+                        visible_markdown = f"\n\n![{base_name}]({public_url})\n"
+                        hidden_markdown = f"\n\n<!-- LINKEDIN_IMAGE_SOURCE: {public_url} -->\n"
+
+                        # Check logic
                         if public_url not in content:
                             if show_content_image:
                                 content += visible_markdown
+                                print(f"Appended visible content image to {filename}")
                             else:
                                 content += hidden_markdown
-                            print(f" injected content image.")
+                                print(f"Appended hidden content image to {filename}")
+                    else:
+                        print(f"No content image found for {filename} in {IMAGES_DIR}/")
 
-                # --- 2. COVER IMAGE (WITH RESIZE) ---
+                # --- PROCESS COVER IMAGE (cover_images/) ---
+                # Triggered ONLY by: devto_cover: yes or cover: yes
                 if has_devto_cover:
-                    cover_image_name, cover_image_path = find_image(base_name, COVER_IMAGES_DIR)
+                    cover_image_name = find_image(base_name, COVER_IMAGES_DIR)
                     if cover_image_name:
-                        # RESIZE STEP
-                        resize_for_devto(cover_image_path)
-                        
                         encoded_name = urllib.parse.quote(cover_image_name)
                         public_url = BASE_COVER_IMG_URL + encoded_name
 
+                        print(f"Found cover image: {cover_image_name}")
+
+                        # Update or Add cover_image in frontmatter
+                        # Use robust regex with MULTILINE and start/end anchors
                         if re.search(r"^cover_image:.*$", content, flags=re.MULTILINE):
                             content = re.sub(r"^cover_image:.*$", f"cover_image: {public_url}", content, flags=re.MULTILINE)
                             print("Updated existing cover_image")
                         else:
+                            # Add after title
                             if re.search(r"^title:.*$", content, flags=re.MULTILINE):
                                 content = re.sub(r"^(title:.*)$", f"\\1\ncover_image: {public_url}", content, flags=re.MULTILINE)
                                 print("Added new cover_image field")
+                            else:
+                                # Fallback if title not found (rare)
+                                print("Warning: Could not find title line to inject cover_image")
                     else:
-                        print(f"Warning: Cover image requested but not found in {COVER_IMAGES_DIR}")
+                        print(f"Warning: devto_cover: yes set but no image found in {COVER_IMAGES_DIR}/")
 
-                # This write block must be aligned with the 'if should_process:' block
                 with open(filepath, "w", encoding="utf-8") as f:
                     f.write(content)
 
