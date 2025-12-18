@@ -1,5 +1,5 @@
 ---
-title: 'Day 17: Building a Real ETL Pipeline in Spark Using Bronze–Silver–Gold Architecture'
+title: 'Day 17: Building a Real ETL Pipeline in Spark Using Bronze-Silver-Gold Architecture'
 cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2017.jpg'
 published: true
 description: ETL pipeline using spark
