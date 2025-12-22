@@ -1,11 +1,13 @@
 ---
 title: 'Day 21: Building a Production-Grade Data Quality Pipeline with Spark & Delta'
-cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2021.jpg
+cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2021.jpg'
 published: true
 description: Building Production-Grade Pipelines
 tags: 'dataengineering, spark, bigdata, python'
 linkedin_image: 'no'
 devto_cover: 'yes'
+id: 3120293
+date: '2025-12-22T09:50:36Z'
 ---
 
 Welcome to Day 21 of the Spark Mastery Series.
