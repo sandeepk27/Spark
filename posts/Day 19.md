@@ -1,11 +1,13 @@
 ---
 title: 'Day 19: Spark Broadcasting & Caching '
-cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2019.jpg
+cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2019.jpg'
 published: true
 description: How to Avoid OOM Errors and Speed Up ETL Jobs using spark
 tags: 'dataengineering, spark, bigdata, python'
 linkedin_image: 'no'
 devto_cover: 'yes'
+id: 3120052
+date: '2025-12-22T08:06:01Z'
 ---
 
 Welcome to Day 19 of the Spark Mastery Series.
