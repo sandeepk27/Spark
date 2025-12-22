@@ -1,11 +1,13 @@
 ---
 title: 'Day 18: Spark Performance Tuning'
-cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2018.jpg
+cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2018.jpg'
 published: true
 description: ETL pipeline using spark
 tags: 'dataengineering, spark, bigdata, python'
 linkedin_image: 'no'
 devto_cover: 'yes'
+id: 3120024
+date: '2025-12-22T07:55:47Z'
 ---
 
 Welcome to Day 18 of the Spark Mastery Series. Today’s content is about speed, cost, and stability.
