@@ -1,11 +1,13 @@
 ---
 title: 'Day 20: Handling Bad Records & Data Quality in Spark'
-cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2020.jpg
+cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2020.jpg'
 published: true
 description: Building Production-Grade Pipelines
 tags: 'dataengineering, spark, bigdata, python'
 linkedin_image: 'no'
 devto_cover: 'yes'
+id: 3120279
+date: '2025-12-22T09:44:56Z'
 ---
 
 Welcome to Day 20 of the Spark Mastery Series. Today we address a harsh truth:
