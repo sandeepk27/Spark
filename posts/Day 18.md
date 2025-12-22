@@ -1,6 +1,6 @@
 ---
 title: 'Day 18: Spark Performance Tuning'
-cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2018.jpg'
+cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2018.jpg
 published: true
 description: ETL pipeline using spark
 tags: 'dataengineering, spark, bigdata, python'
