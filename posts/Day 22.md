@@ -1,6 +1,6 @@
 ---
 title: 'Day 22: Spark Shuffle Deep Dive'
-cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2022.jpg'
+cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2022.jpg
 published: true
 description: Why Your Jobs Are Slow And How to Fix Them
 tags: 'dataengineering, spark, bigdata, python'
