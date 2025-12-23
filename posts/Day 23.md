@@ -1,11 +1,13 @@
 ---
 title: 'Day 23: Spark Shuffle Optimization'
-cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2023.jpg
+cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2023.jpg'
 published: true
-description: Broadcast, Salting & AQE Explained Simply
+description: 'Broadcast, Salting & AQE Explained Simply'
 tags: 'dataengineering, spark, bigdata, python'
 linkedin_image: 'no'
 devto_cover: 'yes'
+id: 3122493
+date: '2025-12-23T09:46:46Z'
 ---
 
 Welcome to Day 23 of the Spark Mastery Series. Yesterday we learned why shuffles are slow.
