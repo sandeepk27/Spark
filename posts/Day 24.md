@@ -1,11 +1,13 @@
 ---
 title: 'Day 24: Spark Structured Streaming'
-cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2024.jpg
+cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2024.jpg'
 published: true
 description: Batch Processing for Real-Time Data
 tags: 'dataengineering, spark, bigdata, python'
 linkedin_image: 'no'
 devto_cover: 'yes'
+id: 3124888
+date: '2025-12-24T12:05:58Z'
 ---
 
 Welcome to Day 24 of the Spark Mastery Series.
