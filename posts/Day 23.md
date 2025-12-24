@@ -1,6 +1,6 @@
 ---
 title: 'Day 23: Spark Shuffle Optimization'
-cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2023.jpg'
+cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2023.jpg
 published: true
 description: 'Broadcast, Salting & AQE Explained Simply'
 tags: 'dataengineering, spark, bigdata, python'
