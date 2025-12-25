@@ -1,11 +1,13 @@
 ---
 title: 'Day 25: Streaming Aggregations in Spark'
-cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2025.jpg
+cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2025.jpg'
 published: true
 description: Windows & Watermarking
 tags: 'dataengineering, spark, bigdata, python'
 linkedin_image: 'no'
 devto_cover: 'yes'
+id: 3126996
+date: '2025-12-25T17:18:07Z'
 ---
 
 Welcome to Day 25 of the Spark Mastery Series. Today we move from “reading streams” to real-time analytics.
