@@ -1,6 +1,6 @@
 ---
 title: 'Day 25: Streaming Aggregations in Spark'
-cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2025.jpg'
+cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2025.jpg
 published: true
 description: Windows & Watermarking
 tags: 'dataengineering, spark, bigdata, python'
