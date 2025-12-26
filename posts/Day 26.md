@@ -1,6 +1,6 @@
 ---
 title: 'Day 26: Spark Streaming Joins'
-cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2026.jpg'
+cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2026.jpg
 published: true
 description: Stream-Static vs Stream-Stream Explained
 tags: 'dataengineering, spark, bigdata, python'
