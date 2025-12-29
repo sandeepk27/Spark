@@ -1,11 +1,13 @@
 ---
 title: 'Day 27: Building Exactly-Once Streaming Pipelines with Spark & Delta Lake'
-cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2027.jpg
+cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2027.jpg'
 published: true
 description: Streaming Pipelines with Spark & Delta Lake
 tags: 'dataengineering, spark, bigdata, python'
 linkedin_image: 'no'
 devto_cover: 'yes'
+id: 3133020
+date: '2025-12-29T08:09:02Z'
 ---
 
 Welcome to Day 27 of the Spark Mastery Series.
