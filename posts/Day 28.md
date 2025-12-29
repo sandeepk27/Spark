@@ -1,11 +1,13 @@
 ---
 title: 'Day 28: Spark Streaming Performance Tuning'
-cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2028.jpg
+cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2028.jpg'
 published: true
 description: How to Avoid OOM & Keep Pipelines Stable
 tags: 'dataengineering, spark, bigdata, python'
 linkedin_image: 'no'
 devto_cover: 'yes'
+id: 3133022
+date: '2025-12-29T08:09:41Z'
 ---
 
 
