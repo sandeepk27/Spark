@@ -1,11 +1,13 @@
 ---
 title: 'Day 29: Building a Production-Grade Real-Time ETL Pipeline with Spark & Delta'
-cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2029.jpg
+cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2029.jpg'
 published: true
 description: Real-Time ETL Pipeline
 tags: 'dataengineering, spark, bigdata, python'
 linkedin_image: 'no'
 devto_cover: 'yes'
+id: 3133023
+date: '2025-12-29T08:09:59Z'
 ---
 
 Welcome to Day 29 of the Spark Mastery Series.
