@@ -1,11 +1,13 @@
 ---
 title: 'Day 30: From Zero to Production-Ready Spark Data Engineer'
-cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2030.jpg
+cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2030.jpg'
 published: true
 description: Streaming Pipelines with Spark & Delta Lake
 tags: 'dataengineering, spark, bigdata, python'
 linkedin_image: 'no'
 devto_cover: 'yes'
+id: 3135191
+date: '2025-12-30T07:33:19Z'
 ---
 
 Learning Spark is easy. Using Spark correctly in production is not.
