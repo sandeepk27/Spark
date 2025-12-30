@@ -1,6 +1,6 @@
 ---
 title: 'Day 30: From Zero to Production-Ready Spark Data Engineer'
-cover_image: 'https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2030.jpg'
+cover_image: https://raw.githubusercontent.com/sandeepk27/Spark/main/cover-images/Day%2030.jpg
 published: true
 description: Streaming Pipelines with Spark & Delta Lake
 tags: 'dataengineering, spark, bigdata, python'
